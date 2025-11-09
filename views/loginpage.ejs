@@ -1,0 +1,97 @@
+<style>
+    .root {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url(/images/login.jpg);
+        background-size: cover;
+    }
+
+    .box {
+        width: 50%;
+        height: 60%;
+        border: 3px solid black;
+        border-radius: 20px;
+        display: flex;
+        background-color: #E9967A;
+        opacity: 0.8;
+        flex-direction: column;
+    }
+
+    .head {
+        width: 98%;
+        height: 70px;
+        margin: 7;
+        background-color: beige;
+        border-radius: 15px;
+        border: 3px solid #222f3e;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .login {
+        font-family: "Roboto Condensed", serif;
+        font-size: 50px;
+        color: #ee5253;
+        display: flex;
+    }
+
+    .image {
+        width: 30%;
+        height:80%;
+        display: flex;
+        justify-content: left;
+        align-items: left;
+        margin: 30px;
+        background-image: url(/images/sideimage.jpg);
+        background-size: cover;
+    }
+</style>
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <form action="/admin/chk_admin_login" method="post" >
+    <div class="root">
+        <div class="box">
+            <div class="head">
+                <div class="login">Login</div>
+            </div>
+            <div class="container" style="display: flex; align-items: center; justify-content: space-between; ">
+                <div class="image" style="height: 280px;">
+                </div>
+                <div class="inputs" style="flex: 1; display: flex; flex-direction: column;  gap: 15px;">
+                    <input type="text" name="emailid" required placeholder="Username" class="form-control" style="width: 80%;" />
+                    <input type="password" name="password" required placeholder="Password" class="form-control" style="width: 80%;" />
+                    <button type="submit" class="btn btn-success" style="width:80%; ">Submit</button>
+                    <div class="form control" style="width: 80%; align-items: center; justify-content: center;"></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    </form>
+</body>
+
+</html>

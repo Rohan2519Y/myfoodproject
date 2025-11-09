@@ -1,0 +1,212 @@
+<style>
+    .root {
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        background: #c7ecee;
+        font-family: "Roboto Condensed", serif;
+    }
+
+    .box {
+        width: 800px;
+        height: auto;
+        background: #fad390;
+        border: 3px solid #8854d0;
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        padding: 5;
+        flex-direction: column;
+    }
+
+    .block_style {
+        width: 770px;
+        height: 60px;
+        background-color: aqua;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2;
+    }
+
+    .text_box {
+        width: 100px;
+        height: 53px;
+        background-color: #38ada9;
+        display: flex;
+        border-radius: 10px;
+        margin-right: 660px;
+        padding: 2;
+    }
+
+    .image {
+        width: 130px;
+        height: 25px;
+        justify-content: baseline;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .text {
+        font-size: 15;
+        font-style: normal;
+        font-weight: bold;
+        color: #3B3B98;
+        background: #F97F51;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 7px;
+        margin-top: 1px;
+    }
+
+    .list {
+        display: flex;
+        margin-top: 1px;
+        margin-left: -60;
+    }
+
+    .stylecenter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #flexSwitchCheckDefault:checked {
+        background-color: red;
+    }
+
+    #flexSwitchCheckDefault:not(:checked) {
+        background-color: green;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="/javascripts/project.js"></script>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <form action="/food/food_edit" method="post" >
+        <input type="hidden" name="foodid"  value="<%=data.foodid%>">
+        <div class="root">
+            <div class="box">
+                <div class="block_style">
+                    <div class="text_box">
+                        <div class="image">
+                            <img src="/images/Bikanervala.png" width="70">
+                            <div class="text">Update Food</div>
+                        </div>
+                    </div>
+                    <div class="list"><img id="" src="/images/shopping-list.png" width="53px"></div>
+                </div>
+                <div class="container">
+                    <div class="row" style="margin-top: 15px;  ">
+                        <div class="col-sm-4">
+                            <select required class="form-select" id="categoryid" name="categoryid">
+                                <option value="<%=data.categoryid %>">
+                                    <%=data.categoryname %>
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <select required class="form-select" id="subcategoryid" name="subcategoryid">
+                                <option value="<%=data.subcategoryid %>">
+                                    <%=data.subcategoryname %>
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" required placeholder="Foodname" value="<%=data.foodname %>"
+                                class="form-control" name="foodname">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row" style="margin-top: 15px; justify-content: center;  ">
+                        <div class="col-sm-12">
+                            <textarea class="form-control" rows="3" placeholder="Ingredients"
+                                name="ingredients"><%=data.ingredients %></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row" style="margin-top: 15px;">
+                        <div class="col-sm-4">
+                            <input type="text" required placeholder="Price" value="<%=data.price %>"
+                                class="form-control" name="price" />
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" required placeholder="HalfPrice" value="<%=data.halfprice %>"
+                                class="form-control" name="halfprice" />
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" required placeholder="Offer" value="<%=data.offer %>"
+                                class="form-control" name="offer" />
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row" style="margin-top: 20px ; ">
+                        <div class="col-sm-6 stylecenter">
+                            <div class="form-check form-switch">
+                                <% 
+                                    var chk=''  
+                                    var lbl=data.foodtype 
+                                    if(data.foodtype=="Non Vegeterian")
+                                    {chk='checked'}
+                                %>
+                                
+                                <input <%=chk %> class="form-check-input" type="checkbox" role="switch"
+                                onchange="changefood()" value="data.foodtype" name="foodtype"
+                                id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault" 
+                                        id="foodtype"><%=lbl%></label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 stylecenter">
+                            <div class="form-check">
+                                <input <%=(data.status=='Available')?'checked':'' %> class="form-check-input" type="radio" name="status" value="Available">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Available
+                                </label>
+                            </div>
+                            <div class="form-check" style="margin-left: 40;">
+                                <input <%=(data.status=='Not Available')?'checked':'' %> class="form-check-input" type="radio" name="status" value="Not Available">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Not Available
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 30px">
+                        <div class="col-sm-6 stylecenter">
+                            <button name="btn" value="Edit" type="submit" class="btn btn-primary" style="width:60%; ">Edit</button>
+                        </div>
+                        <div class="col-sm-6 stylecenter">
+                            <button name="btn" value="Delete" type="submit" class="btn btn-danger" style=" width:60%; ">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </form>
+</body>
+
+</html>
